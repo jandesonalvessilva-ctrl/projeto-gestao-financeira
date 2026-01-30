@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banco acessivel-libras pro</title>
+    <style>
+        body{font-family: 'segoe ul',Arial, sans-serif;
+    margin: 0;
+    background: #e9ecef;
+    text-align: center;
+    color: #333;
+}
+header{
+    background-color: #1a237e;
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px
+    rgba(0,0,0,0,3);
+    margin-bottom: 20px;
+}
+.container{
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 15px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px
+    rgba(0,0,0,0.1)
+}
+.busca-container{
+    margin: 10px 0 25px 0;
+    display: flex;
+    gap: 12px;
+}
+input{
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+input:focus{
+    border-color: #1a237e;
+    box-shadow: 0 0 8px rgba(26, 35, 126, 0.2);
+}
+.btn-busca{
+    background-color: #1a237e;
+    color: white;
+    border: none;
+    padding: 0 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.btn-busca:hover{
+    background-color: #283593;
+}
+.monitor{
+    width: 100%;
+    height: 300px;
+    background: #000;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 5px solid #1a237e;
+}
+.monitor img{
+    height: 100%;
+    width: auto;
+}
+.teclado-libras{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+.tecla{
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 15px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    text-decoration: none;
+}
+.tecla:hover{
+    transform: transiateY(-5px);
+    background-color: #fff;
+    border-color: #1a237e;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.tecla img{width: 45px;height: 45px;margin-bottom: 10px;}
+.tecla span{
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #1a237e;
+    text-transform: uppercase;
+}
+footer{
+    margin-top: 40px;
+    color: #7f8c8d;
+    font-size: 0.9em;
+    padding-bottom: 20px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BANCO ACESSÍVEL</h1>
+        <p style="margin: 0;font-size: 0.9em;opacity: 0.9;">Soluções em Acessibilidade para o Setor Bancário</p>
+    </header>
+
+    <div class="container">
+        <div class="busca-container">
+            <input type="text"id="inputBusca"
+            placeholder="Ex:Saldo,Cartão,Ajuda...">
+            <button class="btn-busca"onclick="realizarBusca()">BUSCAR</button>
+        </div>
+        <div class="monitor">
+            <img id="imagem-monitor"
+    src="https://media.giphy.com/media/v1.Y2LKPTc5MMGI3NjExNHJueHBsZnd6Ym16
+    bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6JmVPXYxX2ludGVybmFsX2dpzI9ieV9pZCZjdD1n/3o7TKSjP8M6E6S2JMY/giphy.gif"alt="Intérprete Virtual"> 
+    </div>
+
+    <div class="teclado-libras">
+        <div class="tecla"onclick="trocarSinal('ajuda')"><img src="https://cdn-icons-png
+    .flaticon.com/512/2489/2489756.png">
+    <span>Saldo</span>
+</div>
+     <div class="tecla"
+   onclick="trocarSinal('cartão')">
+     <img src="https://cdn-icons-png
+.flaticon.com/512/633/633611.png">
+     <span>cartões</span>
+    </div>
+    </div>
+    </div>
+<footer>
+    <p>Projeto Desenvolvido por 
+ <strong>Jandeson Alves</strong></p>
+     <p>foco:Inclusão e Tecnologia Bancária</p>
+</footer>
+<script>
+    //Dicionário de Sinais(poder expandido para  qualquer banco)
+    const SinaisBancarios={
+        "oi":"https//media.giphy.com/media/v1.Y2IkPTc5MGI3NJjExNHJuehBsZnd6Ym16bmZ6bmZ6bmZ6bmZ6bmZ6JmVwPXYxX2ludGVybmFsX2dpZI9ieV9pZCZjdD1n/3o7TKMGpxV1mEZJ8S4/giphy.gif",
+        "obrigado": "https//media.giphy.com/media/v1.Y2IKPTc5MGI3NjExNHJueHBsZnd6Ym16bmZ6JmVwPXYxX2ludGVybmFsX2dpZI9ieV9pZCZjdD1n/I41ITfO7k9T7t5Zkc/giphy.gip", "saldo":https//media.giphy.com/media/v1.Y2IKPTc5MGI3NjENHJueHBsZnd6Ym16bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmVWPXYxX2ludGVybmFsX2dpZI9ieV9pZCZjdD1n/3o7TKMGpxV1mEZJ8S4/piphy.gif"//
+    };
+    function trocarSinal(palavra){
+        const monitorImg = document.get 
+        ElementByld('imagem-monitor');
+        const termo = palavra.toLowerCase().trim();
+        const url = sinaisBancarios[termo];
+
+        if(url){
+            monitorImg.src=url;
+        } else{
+            alert("Serviço ou sinal não localizado no momento.");
+        }
+    }
+    function realizarBusca(){
+        const busca = document.getElementByld('inputBusca').value;
+        if(busca)trocarSinal(busca);
+    }
+    document.getElementByld('inputBusca').addEventListener('keypress',function(e){
+        if(e.key==='Enter'){
+            realizarBusca();
+        }
+    });
+</script>
+</body>
+</html>
